@@ -52,15 +52,15 @@ export function NaturalLanguageSearch({ data }: NaturalLanguageSearchProps) {
           if (item.PreferredPhases) {
             const phases = item.PreferredPhases.toString();
             if (phases.includes('-')) {
-              const [start, end] = phases.split('-').map(p => parseInt(p.trim()));
+              const [start, end] = phases.split('-').map((p: string) => parseInt(p.trim()));
               return phaseNumber >= start && phaseNumber <= end;
             } else {
-              const phaseList = phases.split(',').map(p => parseInt(p.trim()));
+              const phaseList = phases.split(',').map((p: string) => parseInt(p.trim()));
               return phaseList.includes(phaseNumber);
             }
           }
           if (item.AvailableSlots) {
-            const slots = item.AvailableSlots.split(',').map(s => parseInt(s.trim()));
+            const slots = item.AvailableSlots.split(',').map((s: string) => parseInt(s.trim()));
             return slots.includes(phaseNumber);
           }
           return false;

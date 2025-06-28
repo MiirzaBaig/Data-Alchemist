@@ -47,7 +47,7 @@ export class ValidationEngine {
     // 2. Duplicate ClientIDs
     const clientIds = clients.map(c => c.ClientID).filter(Boolean);
     const duplicateIds = clientIds.filter((id, idx) => clientIds.indexOf(id) !== idx);
-    const uniqueDuplicates = [...new Set(duplicateIds)];
+    const uniqueDuplicates = Array.from(new Set(duplicateIds));
     
     uniqueDuplicates.forEach(duplicateId => {
       const indices = clients.map((client, idx) => client.ClientID === duplicateId ? idx : -1).filter(i => i !== -1);
@@ -191,7 +191,7 @@ export class ValidationEngine {
     // 6. Duplicate WorkerIDs
     const workerIds = workers.map(w => w.WorkerID).filter(Boolean);
     const duplicateIds = workerIds.filter((id, idx) => workerIds.indexOf(id) !== idx);
-    const uniqueDuplicates = [...new Set(duplicateIds)];
+    const uniqueDuplicates = Array.from(new Set(duplicateIds));
     
     uniqueDuplicates.forEach(duplicateId => {
       const indices = workers.map((worker, idx) => worker.WorkerID === duplicateId ? idx : -1).filter(i => i !== -1);
@@ -306,18 +306,17 @@ export class ValidationEngine {
 
     // 7. Duplicate TaskIDs
     const taskIds = tasks.map(t => t.TaskID).filter(Boolean);
-    const duplicateIds = taskIds.filter((id, idx) => taskIds.indexOf(id) !== idx);
-    const uniqueDuplicates = [...new Set(duplicateIds)];
+    const duplicateTaskIds = taskIds.filter((id, idx) => taskIds.indexOf(id) !== idx);
+    const uniqueDuplicateTasks = Array.from(new Set(duplicateTaskIds));
     
-    uniqueDuplicates.forEach(duplicateId => {
+    uniqueDuplicateTasks.forEach(duplicateId => {
       const indices = tasks.map((task, idx) => task.TaskID === duplicateId ? idx : -1).filter(i => i !== -1);
-      indices.forEach(idx => {
-        errors.push({
-          row: idx,
-          field: 'TaskID',
-          message: `Duplicate TaskID: ${duplicateId}`,
-          severity: 'error'
-        });
+      errors.push({
+        row: indices[0],
+        field: 'TaskID',
+        message: `Duplicate TaskID found: ${duplicateId}`,
+        severity: 'error',
+        suggestion: 'Each task must have a unique identifier'
       });
     });
 
@@ -377,6 +376,24 @@ export class ValidationEngine {
         suggestion: `Current load: ${totalTaskLoad}, Available capacity: ${totalWorkerCapacity}`
       });
     }
+
+    // Check for requested tasks that don't exist
+    const allTaskIds = new Set(tasks.map(t => t.TaskID));
+    clients.forEach((client, index) => {
+      if (client.RequestedTaskIDs) {
+        const requestedIds = client.RequestedTaskIDs.split(',').map(id => id.trim());
+        const invalidIds = requestedIds.filter(id => !allTaskIds.has(id));
+        if (invalidIds.length > 0) {
+          errors.push({
+            row: index,
+            field: 'RequestedTaskIDs',
+            message: `Client requests non-existent TaskIDs: ${invalidIds.join(', ')}`,
+            severity: 'error',
+            suggestion: 'Ensure all requested task IDs exist in the tasks file'
+          });
+        }
+      }
+    });
 
     return errors;
   }

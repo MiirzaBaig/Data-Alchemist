@@ -95,7 +95,7 @@ export function FileUploadZone({ onDataProcessed }: FileUploadZoneProps) {
       
       const newFiles = { ...files, [type]: file };
       if (newFiles.clients && newFiles.workers && newFiles.tasks) {
-        await processAllData(newFiles);
+        await processAllData(newFiles as {clients: File, workers: File, tasks: File});
       }
     } catch (error) {
       console.error(`Error processing ${type} file:`, error);

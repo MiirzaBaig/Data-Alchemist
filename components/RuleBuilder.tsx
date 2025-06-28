@@ -323,21 +323,21 @@ function CoRunRuleForm({ onSubmit, data }: { onSubmit: (taskIds: string[]) => vo
 }
 
 function SlotRestrictionForm({ onSubmit, data }: { onSubmit: (group: string, minSlots: number) => void; data?: ProcessedData | null }) {
-  const [group, setGroup] = useState('');
+  const [targetGroup, setTargetGroup] = useState('All');
   const [minSlots, setMinSlots] = useState(1);
 
-  const availableGroups = [...new Set(data?.workers?.map(w => w.WorkerGroup).filter(Boolean) || [])];
+  const availableGroups = Array.from(new Set(data?.workers?.map(w => w.WorkerGroup).filter(Boolean) || []));
 
   return (
     <div className="space-y-4">
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">Worker Group</label>
         <select
-          value={group}
-          onChange={(e) => setGroup(e.target.value)}
+          value={targetGroup}
+          onChange={(e) => setTargetGroup(e.target.value)}
           className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg text-white focus:border-purple-500 focus:outline-none touch-target"
         >
-          <option value="">Select a group</option>
+          <option value="All">All Groups</option>
           {availableGroups.map(g => (
             <option key={g} value={g}>{g}</option>
           ))}
@@ -356,8 +356,8 @@ function SlotRestrictionForm({ onSubmit, data }: { onSubmit: (group: string, min
       </div>
       
       <button
-        onClick={() => onSubmit(group, minSlots)}
-        disabled={!group}
+        onClick={() => onSubmit(targetGroup, minSlots)}
+        disabled={!targetGroup}
         className="w-full px-6 py-3 bg-purple-600 rounded-lg text-white font-medium hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors touch-target"
       >
         Create Slot Restriction Rule
@@ -370,7 +370,7 @@ function LoadLimitForm({ onSubmit, data }: { onSubmit: (workerGroup: string, max
   const [workerGroup, setWorkerGroup] = useState('');
   const [maxSlots, setMaxSlots] = useState(1);
 
-  const availableGroups = [...new Set(data?.workers?.map(w => w.WorkerGroup).filter(Boolean) || [])];
+  const availableGroups = Array.from(new Set(data?.workers?.map(w => w.WorkerGroup).filter(Boolean) || []));
 
   return (
     <div className="space-y-4">
