@@ -27,7 +27,8 @@ import {
   Rocket,
   Shield,
   Brain,
-  Layers
+  Layers,
+  Users
 } from 'lucide-react';
 
 export function Documentation() {
