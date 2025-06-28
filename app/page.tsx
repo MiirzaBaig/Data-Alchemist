@@ -138,7 +138,7 @@ export default function HomePage() {
           </div>
 
           <div className="hidden lg:flex items-center gap-2 text-sm text-gray-400">
-            {activeSection !== 'docs' && activeSection !== 'landing' && (
+            {activeSection !== 'docs' && (
               <>
                 <span className="text-xs sm:text-sm">Step {Math.max(0, currentStep - 1)} of {workflowSteps.length}</span>
                 <div className="flex items-center gap-1">
@@ -182,8 +182,8 @@ export default function HomePage() {
                 {navigationItems.map((item, index) => {
                   const Icon = item.icon;
                   const isActive = activeSection === item.id;
-                  const isCompleted = index < currentStep && item.id !== 'docs' && item.id !== 'landing';
-                  const isDisabled = !data && item.id !== 'upload' && item.id !== 'docs' && item.id !== 'landing';
+                  const isCompleted = index < currentStep && item.id !== 'docs';
+                  const isDisabled = !data && !['upload', 'docs', 'landing'].includes(item.id);
                   
                   return (
                     <button
@@ -223,7 +223,7 @@ export default function HomePage() {
 
             {/* Sidebar Footer */}
             <div className="border-t border-gray-800 p-3 sm:p-4 safe-area-inset-bottom">
-              {activeSection !== 'docs' && activeSection !== 'landing' && (
+              {activeSection !== 'docs' && (
                 <div className="text-xs text-gray-500">
                   <div className="mb-2">Progress: {Math.round((Math.max(0, currentStep - 1) / workflowSteps.length) * 100)}%</div>
                   <div className="progress">
