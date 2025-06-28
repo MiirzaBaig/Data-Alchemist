@@ -1,121 +1,105 @@
-# Data Alchemist 🧪
+<div align="center">
+  <h1 align="center">Data Alchemist 🧪</h1>
+  <p align="center">
+    A powerful Next.js application for transforming and managing data with natural language processing capabilities and intuitive rule-based systems.
+  </p>
 
-A powerful Next.js application for transforming and managing data with natural language processing capabilities and intuitive rule-based systems.
+  <p align="center">
+    <a href="https://github.com/MiirzaBaig/Data-Alchemist/blob/main/LICENSE" target="blank">
+      <img src="https://img.shields.io/github/license/MiirzaBaig/Data-Alchemist?style=for-the-badge" alt="license" />
+    </a>
+    <a href="https://github.com/MiirzaBaig/Data-Alchemist/fork" target="blank">
+      <img src="https://img.shields.io/github/forks/MiirzaBaig/Data-Alchemist?style=for-the-badge" alt="forks" />
+    </a>
+    <a href="https://github.com/MiirzaBaig/Data-Alchemist/stargazers" target="blank">
+      <img src="https://img.shields.io/github/stars/MiirzaBaig/Data-Alchemist?style=for-the-badge" alt="stars" />
+    </a>
+  </p>
 
-![Next.js](https://img.shields.io/badge/Next.js-13-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-38B2AC)
+  <p align="center">
+    <img src="https://img.shields.io/badge/Next.js-13-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+    <img src="https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-3-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/Shadcn_UI-black?style=for-the-badge&logo=shadcn-ui" alt="Shadcn UI" />
+  </p>
+</div>
 
-## 🚀 Features
+## ✨ Features
 
-- **Data Management** - Robust system for handling complex data structures
-- **Natural Language Processing** - Convert natural language into structured rules
-- **Rule Builder** - Intuitive interface for creating and managing business rules
-- **File Upload System** - Secure and efficient file handling
-- **Export Capabilities** - Flexible data export options
-- **Prioritization Panel** - Smart organization of tasks and rules
-- **Modern UI Components** - Built with Shadcn UI and Tailwind CSS
+- **Data Management**: Robust system for handling complex data structures.
+- **Natural Language Processing**: Convert natural language into structured rules.
+- **Rule Builder**: Intuitive interface for creating and managing business rules.
+- **File Upload System**: Secure and efficient file handling.
+- **Export Capabilities**: Flexible data export options.
+- **Prioritization Panel**: Smart organization of tasks and rules.
+- **Modern UI**: Built with Shadcn UI and Tailwind CSS for a sleek, responsive experience.
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 13 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Shadcn UI
-- **Form Handling**: React Hook Form
-- **Validation**: Zod
-- **State Management**: React Hooks
+| Category        | Technology                                                                                                  |
+| --------------- | ----------------------------------------------------------------------------------------------------------- |
+| **Framework**   | [Next.js](https://nextjs.org/) 13 (App Router)                                                              |
+| **Language**    | [TypeScript](https://www.typescriptlang.org/)                                                               |
+| **Styling**     | [Tailwind CSS](https://tailwindcss.com/)                                                                    |
+| **UI**          | [Shadcn UI](https://ui.shadcn.com/)                                                                         |
+| **Form**        | [React Hook Form](https://react-hook-form.com/)                                                             |
+| **Validation**  | [Zod](https://zod.dev/)                                                                                     |
+| **State**       | [React Hooks](https://reactjs.org/docs/hooks-intro.html)                                                    |
 
-## 📦 Installation
+## 🚀 Getting Started
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/MiirzaBaig/Data-Alchemist.git
-   ```
+### Prerequisites
 
-2. Navigate to the project directory:
-   ```bash
-   cd Data-Alchemist
-   ```
+- [Node.js](https://nodejs.org/en/) (v18 or newer)
+- [pnpm](https://pnpm.io/installation) (recommended) or npm/yarn
 
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
+### Installation
 
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/MiirzaBaig/Data-Alchemist.git
+    cd Data-Alchemist
+    ```
+2.  **Install dependencies:**
+    ```sh
+    pnpm install
+    ```
+3.  **Run the development server:**
+    ```sh
+    pnpm dev
+    ```
+4.  Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📁 Project Structure
 
 ```
 .
-├── app/                 # Next.js app router files
-├── components/         # React components
-│   ├── ui/            # Reusable UI components
-│   └── ...            # Feature-specific components
-├── hooks/             # Custom React hooks
-├── lib/               # Utility functions
-├── public/            # Static assets
-├── types/             # TypeScript type definitions
-└── utils/             # Helper functions
+├── app/                  # Next.js App Router (pages, layouts)
+├── components/           # Reusable React components
+│   ├── ui/               # Shadcn UI components
+│   └── (features)        # Feature-specific components
+├── hooks/                # Custom React hooks
+├── lib/                  # Core libraries and utilities
+├── public/               # Static assets (images, fonts, etc.)
+├── types/                # TypeScript type definitions
+└── utils/                # Helper functions
 ```
-
-## 🔧 Configuration
-
-The project uses several configuration files:
-
-- `next.config.js` - Next.js configuration
-- `tailwind.config.ts` - Tailwind CSS configuration
-- `tsconfig.json` - TypeScript configuration
-- `components.json` - Shadcn UI configuration
-
-## 🧩 Components
-
-Key components include:
-
-- **DataManagement** - Core data handling interface
-- **RuleBuilder** - Visual rule creation system
-- **NaturalLanguageSearch** - Intelligent search functionality
-- **FileUploadZone** - Drag-and-drop file upload
-- **PrioritizationPanel** - Task organization interface
-- **ExportSystem** - Data export management
-
-## 🔍 Usage
-
-1. **Data Upload**
-   - Use the FileUploadZone to import your data
-   - Supports various file formats
-
-2. **Rule Creation**
-   - Navigate to the RuleBuilder
-   - Create rules using natural language or visual builder
-
-3. **Data Processing**
-   - Apply rules to your data
-   - Use the PrioritizationPanel to manage processing order
-
-4. **Export Results**
-   - Choose your preferred export format
-   - Download processed data
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+See `CONTRIBUTING.md` for more information.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📬 Contact
 
@@ -125,4 +109,6 @@ Project Link: [https://github.com/MiirzaBaig/Data-Alchemist](https://github.com/
 
 ---
 
-Made with ❤️ by Mirza 
+<p align="center">
+  Made with ❤️ by Mirza
+</p> 
